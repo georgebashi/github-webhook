@@ -21,6 +21,8 @@ type Payload struct {
 
 func main() {
 
+	log.SetOutput(os.Stderr)
+
 	var crt string
 	var key string
 	var secret string
@@ -74,7 +76,7 @@ func main() {
 
 		branch := strings.Replace(p.Ref, "refs/heads/", "", 1)
 
-		fmt.Fprintln(os.Stderr, branch)
+		fmt.Println(branch)
 	})
 
 	log.Fatal(http.ListenAndServeTLS(":"+strconv.Itoa(port), crt, key, nil))
